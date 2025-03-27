@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Project: Library</title>
+</head>
+<body>
+  <h1 class="title">Project: Library</h1>
+  <p class="title-txt">"What this project does"</p>
+
+  <button class="add-book-btn">Add Book</button>
+
+  <form>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="pages">Pages:</label>
+    <input type="number" id="pages" name="pages" required>
+
+    <fieldset>
+      <legend>Have You Read This Book?</legend>
+      <input type="radio" value="true" id="have-read" name="haveRead" checked>
+      <label for="have-read">Yes</label>
+      <input type="radio" value="false" id="have-not-read" name="haveRead">
+      <label for="have-not-read">No</label>
+    </fieldset>
+
+    <button class="submit-btn" type="submit">Submit</button>
+    <button class="cancel-btn" type="reset">Cancel</button>
+  </form>
+
+  <div class="card-container">
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
