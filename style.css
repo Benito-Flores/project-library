@@ -18,9 +18,18 @@
 
 .title-txt {
   margin-bottom: 40px;
+  width: min(60%, 500px);
+  margin-inline: auto;
 }
 
-.add-book-btn {
+.delete-book-btn,
+.read-btn {
+  display: inline;
+}
+
+.add-book-btn,
+.delete-book-btn,
+.read-btn {
   display: block;
   margin-inline: auto;
   padding: .5rem 2rem;
@@ -33,7 +42,11 @@
 }
 
 .add-book-btn:hover,
-.add-book-btn:focus {
+.add-book-btn:focus,
+.delete-book-btn:hover,
+.delete-book-btn:focus,
+.read-btn:hover,
+.read-btn:focus {
   background-color: rgba(255, 255, 255, 0.826);
   cursor: pointer;
 }
@@ -110,7 +123,26 @@ fieldset {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.card > p,
+.card > h3 {
+  background-color: inherit;
+}
+
+.card > p {
+  margin-block: 3px;
+}
+
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+.delete-book-btn,
+.read-btn {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.delete-book-btn {
+  margin-right: 10px;
 }

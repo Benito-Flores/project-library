@@ -6,7 +6,7 @@ function newBook(title, author, pages, haveRead, ID) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.haveRead = haveRead === true ? "have read" : "have not read";
+  this.haveRead = haveRead === true ? "Have read" : "Have not read";
   this.ID = crypto.randomUUID();
 };
 
@@ -20,16 +20,58 @@ function addBookToLibrary(book) {
   library.push(book);
 };
 
-// Loops library array and prints each book
-function printLibrary(array) {
-  const bookTitle = document.createElement("div");
-  bookTitle.setAttribute("class", "card");
-  bookTitle.textContent = array[bookCount].title;
-  cardContainer.appendChild(bookTitle);
-};
+// Adds book to the DOM
+function printLibrary(book) {
+  const bookTitle = document.createElement("h3");
+  const bookAuthor = document.createElement("p");
+  const bookPages = document.createElement("p");
+  const bookReadStatus = document.createElement("p");
+  const card = document.createElement("div");
+  const deleteBtn = document.createElement("button");
+  const readBtn = document.createElement("button");
 
-// Global Variables
-let bookCount = 0;
+  card.classList.add("card");
+  deleteBtn.classList.add("delete-book-btn");
+  readBtn.classList.add("read-btn");
+  readBtn.textContent = "Mark as Read";
+  deleteBtn.textContent = "Delete";
+  deleteBtn.dataset.id = book.ID;
+  card.dataset.id = book.ID;
+  bookTitle.textContent = `Title: ${book.title}`;
+  bookAuthor.textContent = `Author: ${book.author}`;
+  bookPages.textContent = `Pages: ${book.pages}`;
+  bookReadStatus.textContent = `Read Status: ${book.haveRead}`;
+  
+  card.appendChild(bookTitle);
+  card.appendChild(bookAuthor);
+  card.appendChild(bookPages);
+  card.appendChild(bookReadStatus);
+  card.appendChild(deleteBtn);
+
+  if(bookReadStatus.textContent === `Read Status: Have not read`) {
+    card.appendChild(readBtn);
+  };
+
+  cardContainer.appendChild(card);
+
+  deleteBtn.addEventListener("click", () => {
+    const id = deleteBtn.dataset.id;
+
+    const index = library.findIndex(book => book.ID === id);
+
+    library.splice(index, 1);
+    
+    card.remove();
+
+  });
+
+  readBtn.addEventListener("click", () => {
+    bookReadStatus.textContent = "Read Status: Have read";
+    book.haveRead = "Have read";
+    readBtn.remove();
+  });
+
+};
 
 // Library array
 const library = [];
@@ -63,9 +105,7 @@ form.addEventListener("submit", (event) => {
   );
   addBookToLibrary(book);
 
-  printLibrary(library);
-
-  bookCount++;
+  printLibrary(book);
 
   form.reset();
 });
