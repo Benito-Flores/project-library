@@ -39,13 +39,15 @@
 }
 
 form {
-  position: absolute;
+  position: fixed;
   background-color: white;
   top: 0;
   bottom: 0;
   right: 0;
   left: 100%;
   transition: .2s;
+  width: 100%;
+  transform: translateX(100%);
   background-color: black;
   padding: 25px;
   display: flex;
@@ -53,7 +55,7 @@ form {
 }
 
 .show-form {
-  left: 0;
+  transform: translateX(-100%);
 }
 
 form > * {
